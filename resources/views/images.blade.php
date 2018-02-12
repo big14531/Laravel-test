@@ -6,7 +6,7 @@
     <h1>Gallery</h1>
     <hr>
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             @if (count($errors) > 0)
             <div class="alert alert-danger">
                 <strong>Whoops!</strong> There were some problems with your input.<br><br>
