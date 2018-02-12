@@ -17,10 +17,17 @@
                 </ul>
             </div>
             @endif
+
             <form action="{{ url('images/create')}}" method="post" class="dropzone" id="my-awesome-dropzone">
                 {{ csrf_field() }}
             </form>
-            <div class="card">
+
+            <div class="gallery-box">
+                @foreach ( $images as $image )
+                <div class="img-box">
+                    <img src="/storage/{{ $image->path }}" alt="" class="gallery-item">
+                </div>
+                @endforeach
             </div>
         </div>
     </div>

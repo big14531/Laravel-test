@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 
+
 class ImageController extends Controller
 {
     public function __construct()
@@ -25,14 +26,15 @@ class ImageController extends Controller
         ]);
         $image = $request->file('file');
         
-        $path = $image->store( 'file' );
+        $path = $image->store('public');
 
         Image::create([
                 'user_id' => Auth::id(),
-                'path' => $path,
+                'path' => $image->hashName(),
+                'name' => $image->getClientOriginalName(),
                 'type' => $image->extension(),
                 'size' => $image->getClientSize()
         ]);
-        return back()->with($path);
+        return back()->with('success' , 'uploaded done');
     }
 }
