@@ -4,17 +4,22 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card card-default">
-                <div class="card-header">Dashboard</div>
+            <div class="disk-usage-box card card-default">
+                <div class="card-header">Disk Usage</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+                    <ul>
+                        <li>Total size :  </li>
+                        <li>Number of files :  </li>
+                    </ul>
+                </div>
+            </div>
 
-                    You are logged in!
+            <div class="file-comp-box card card-default">
+                <div class="card-header">File Usage Compositions</div>
+
+                <div class="card-body">
+                    No data
                 </div>
             </div>
         </div>
