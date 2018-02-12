@@ -2,27 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('auth');
     }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        return view('home');
+        $images = User::find( Auth::id() )->images;
+
+        $total_file = count( $images );
+        $total_size = $images->sum('size');
+
+        $file_type =[];
+        $sub_array = $images->groupBy('type');
+
+        foreach ($sub_array as $key => $value) {
+            $sub_file = count( $sub_array->get($key) );
+            $sub_size = $sub_array->get($key)->sum('size');
+            array_push( $file_type , [ 'name' => $key, 'count' => $sub_file ,'size' => $sub_size ] );
+        }
+        return view('home' , compact('total_file','total_size','file_type') );
     }
 }
