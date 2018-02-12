@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class ImageController extends Controller
 {
@@ -12,15 +14,25 @@ class ImageController extends Controller
     }
     public function index()
     {
-        return view('images');
+        $images = Image::where( 'user_id' , '=' , Auth::id() )->get();
+        return view('images' , compact('images') );
     }
+
     public function store( Request $request )
     {   
         $this->validate( $request, [
             'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-        $path = $request->file('file')->store( 'file' );
-    
+        $image = $request->file('file');
+        
+        $path = $image->store( 'file' );
+
+        Image::create([
+                'user_id' => Auth::id(),
+                'path' => $path,
+                'type' => $image->extension(),
+                'size' => $image->getClientSize()
+        ]);
         return back()->with($path);
     }
 }
