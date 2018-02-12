@@ -35,7 +35,6 @@
 
 <script>
         var dropzoneId = "dropzone";
-
         window.addEventListener("dragenter", function(e) {
           if (e.target.id != dropzoneId) {
             e.preventDefault();
@@ -43,7 +42,6 @@
             e.dataTransfer.dropEffect = "none";
           }
         }, false);
-        
         window.addEventListener("dragover", function(e) {
           if (e.target.id != dropzoneId) {
             e.preventDefault();

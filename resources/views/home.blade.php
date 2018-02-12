@@ -2,6 +2,8 @@
 
 @section('content')
 <div class="container">
+    <h1>Home</h1>
+    <hr>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="disk-usage-box card card-default">
