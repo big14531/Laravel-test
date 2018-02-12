@@ -18,7 +18,7 @@
             </div>
             @endif
 
-            <form action="{{ url('images/create')}}" method="post" class="dropzone" id="my-awesome-dropzone">
+            <form action="{{ url('images/create')}}" method="post" class="dropzone" id="dropzone">
                 {{ csrf_field() }}
             </form>
 
@@ -32,4 +32,32 @@
         </div>
     </div>
 </div>
+
+<script>
+        var dropzoneId = "dropzone";
+
+        window.addEventListener("dragenter", function(e) {
+          if (e.target.id != dropzoneId) {
+            e.preventDefault();
+            e.dataTransfer.effectAllowed = "none";
+            e.dataTransfer.dropEffect = "none";
+          }
+        }, false);
+        
+        window.addEventListener("dragover", function(e) {
+          if (e.target.id != dropzoneId) {
+            e.preventDefault();
+            e.dataTransfer.effectAllowed = "none";
+            e.dataTransfer.dropEffect = "none";
+          }
+        });
+        
+        window.addEventListener("drop", function(e) {
+          if (e.target.id != dropzoneId) {
+            e.preventDefault();
+            e.dataTransfer.effectAllowed = "none";
+            e.dataTransfer.dropEffect = "none";
+          }
+        });
+</script>
 @endsection
