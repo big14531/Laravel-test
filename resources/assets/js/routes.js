@@ -1,16 +1,12 @@
 import Home from './views/Home'
-import About from './views/About'
+import About from './views/Login'
+import Register from './views/Register'
 import VueRouter from 'vue-router'
 
 let routes = [
-    {
-        path : '/',
-        component : Home
-    },
-    {
-        path : '/about',
-        component : About
-    }
+    { path : '/', component : Home },
+    { path : '/login', component : Login },
+    { path : '/regiter', component : Register }
 ]
 
 export default new VueRouter({

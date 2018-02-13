@@ -16,7 +16,7 @@
 <body>
     <div id="app">
         @include('layouts.nav')
-
+        <route-link to="/login"></route-link>
         <main class="py-4">
             @yield('content')
         </main>
