@@ -10,17 +10,46 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{--  Dropzone.js cdn  --}}
+    <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
+    {{--  Prevent drop file to open  --}}
+    <script>    
+            var dropzoneId = "dropzone";
+            window.addEventListener("dragenter", function(e) {
+            if (e.target.id != dropzoneId) {
+                e.preventDefault();
+                e.dataTransfer.effectAllowed = "none";
+                e.dataTransfer.dropEffect = "none";
+            }
+            }, false);
+            window.addEventListener("dragover", function(e) {
+            if (e.target.id != dropzoneId) {
+                e.preventDefault();
+                e.dataTransfer.effectAllowed = "none";
+                e.dataTransfer.dropEffect = "none";
+            }
+            });
+            
+            window.addEventListener("drop", function(e) {
+            if (e.target.id != dropzoneId) {
+                e.preventDefault();
+                e.dataTransfer.effectAllowed = "none";
+                e.dataTransfer.dropEffect = "none";
+            }
+            });
+    </script>
 </head>
 <body>
     <div id="app">
         @include('layouts.nav')
         <main class="py-4">
             <router-view></router-view>
-            @yield('content')
         </main>
     </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+
+    
 </body>
 </html>

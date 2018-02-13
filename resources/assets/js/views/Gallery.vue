@@ -1,18 +1,22 @@
 <template>
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card card-default">
-                    <div class="card-header">Login Component</div>
+    <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
+    <h1>Gallery</h1>
+    <hr>
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <form action="images/create" method="post" class="dropzone" id="dropzone">
+            </form>
 
-                    <div class="card-body">
-                        I'm an example component.
-                    </div>
-                </div>
+            <div class="gallery-box">
             </div>
         </div>
     </div>
+</div>
+
+
 </template>
+
 
 <script>
     export default {
@@ -21,4 +25,5 @@
         }
     }
 </script>
+
 

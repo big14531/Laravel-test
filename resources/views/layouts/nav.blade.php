@@ -12,7 +12,7 @@
             <ul class="navbar-nav mr-auto">
                 @auth
                 <router-link class="nav-link left" to="/">Home</router-link>
-                <router-link class="nav-link left" to="/images">Gallery</router-link>
+                <router-link class="nav-link left" to="/gallery">Gallery</router-link>
                 @endauth
             </ul>
             <!-- Right Side Of Navbar -->

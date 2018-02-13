@@ -49674,6 +49674,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -49697,18 +49727,24 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "container" }, [
+      _c("h1", [_vm._v("Home")]),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
       _c("div", { staticClass: "row justify-content-center" }, [
         _c("div", { staticClass: "col-md-8" }, [
-          _c("div", { staticClass: "card card-default" }, [
+          _c("div", { staticClass: "disk-usage-box card card-default" }, [
+            _c("div", { staticClass: "card-header" }, [_vm._v("Disk Usage")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [_c("ul")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "file-comp-box card card-default" }, [
             _c("div", { staticClass: "card-header" }, [
-              _vm._v("Example Component")
+              _vm._v("File Usage Compositions")
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _vm._v(
-                "\n                    I'm an example component.\n                "
-              )
-            ])
+            _c("div", { staticClass: "card-body" })
           ])
         ])
       ])
@@ -49793,6 +49829,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -49816,19 +49856,25 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "container" }, [
+      _c("link", {
+        attrs: {
+          rel: "stylesheet",
+          href: "https://rawgit.com/enyo/dropzone/master/dist/dropzone.css"
+        }
+      }),
+      _vm._v(" "),
+      _c("h1", [_vm._v("Gallery")]),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
       _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("div", { staticClass: "card card-default" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _vm._v("Login Component")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _vm._v(
-                "\n                    I'm an example component.\n                "
-              )
-            ])
-          ])
+        _c("div", { staticClass: "col-md-10" }, [
+          _c("form", {
+            staticClass: "dropzone",
+            attrs: { action: "images/create", method: "post", id: "dropzone" }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "gallery-box" })
         ])
       ])
     ])
