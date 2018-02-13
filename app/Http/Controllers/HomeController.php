@@ -12,7 +12,7 @@ class HomeController extends Controller
     {
         $this->middleware('auth');
     }
-    public function index()
+    public function show()
     {
         $images = User::find( Auth::id() )->images;
 
@@ -27,6 +27,11 @@ class HomeController extends Controller
             $sub_size = $sub_array->get($key)->sum('size');
             array_push( $file_type , [ 'name' => $key, 'count' => $sub_file ,'size' => $sub_size ] );
         }
-        return view('home' , compact('total_file','total_size','file_type') );
+        return compact('total_file','total_size','file_type');
+    }
+
+    public function index()
+    {
+        return view('layouts.app');
     }
 }
