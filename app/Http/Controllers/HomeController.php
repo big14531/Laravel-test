@@ -12,16 +12,18 @@ class HomeController extends Controller
     {
         $this->middleware('auth');
     }
+
     public function show()
     {
         $images = User::find( Auth::id() )->images;
 
+        // Get Total size and number of file
         $total_file = count( $images );
         $total_size = $images->sum('size');
 
+        // Get size and number of file group by file type
         $file_type =[];
         $sub_array = $images->groupBy('type');
-
         foreach ($sub_array as $key => $value) {
             $sub_file = count( $sub_array->get($key) );
             $sub_size = $sub_array->get($key)->sum('size');
