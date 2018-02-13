@@ -4,20 +4,22 @@
     <hr>
     <div class="row justify-content-center">
         <div class="col-md-8">
+
+            <!-- Overview Card -->
             <div class="disk-usage-box card card-default">
                 <div class="card-header">Disk Usage</div>
                 <div class="card-body">
                     <ul>
                         <li>Total size : {{ (total_size/(1024*1024)).toFixed(2) }}MB ( {{total_size.toFixed(2)}} B )</li>
                         <li>Number of files : {{ total_file }}</li>
-                        
                     </ul>
                 </div>
             </div>
+
+            <!-- File Type Card -->
             <div class="file-comp-box card card-default">
                 <div class="card-header">File Usage Compositions</div>
                 <div class="card-body">
-                   
                     <table class="table">
                         <thead>
                             <tr>
@@ -34,7 +36,6 @@
                             </tr>
                         </tbody>
                     </table>
-
                 </div>
             </div>
         </div>
@@ -43,6 +44,7 @@
 </template>
 
 <script>
+    // Inport Dependency
     import axios from 'axios';
 
     export default {
@@ -54,18 +56,16 @@
             errors: []
         }
     },
-
   created() {
-    axios.get('/home/show')
-    .then(response => {
-      this.total_file = response.data.total_file
-      this.total_size = response.data.total_size
-      this.datas = response.data.file_type
-    })
-    .catch(e => {
-      this.errors.push(e)
-    })
-  
-  }
+        axios.get('/home/show')
+        .then(response => {
+            this.total_file = response.data.total_file
+            this.total_size = response.data.total_size
+            this.datas = response.data.file_type
+        })
+        .catch(e => {
+        this.errors.push(e)
+        })
+    }
 }
 </script>

@@ -4,7 +4,6 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home/show', 'HomeController@show');
 Route::get('/images/show', 'ImageController@index');

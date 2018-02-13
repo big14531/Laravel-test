@@ -13,19 +13,21 @@ class ImageController extends Controller
     {
         $this->middleware( 'auth' );
     }
+
+    // Get All image with relate with user
     public function index()
     {
         $images = Image::where( 'user_id' , '=' , Auth::id() )->get();
         return compact('images');
     }
 
+    // Store image
     public function store( Request $request )
     {   
         $this->validate( $request, [
             'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         $image = $request->file('file');
-        
         $path = $image->store('public');
 
         Image::create([

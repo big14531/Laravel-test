@@ -6,7 +6,6 @@ let routes = [
     { path : '/', component : Home },
     { path : '/gallery', component : Gallery }
 ]
-
 export default new VueRouter({
     routes
 });
