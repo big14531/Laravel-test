@@ -11,8 +11,8 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 @auth
-                <li><a class="nav-link left" href="{{ url('/home') }}">Home</a></li>
-                <li><a class="nav-link" href="{{ url('/images') }}">Gallery</a></li>
+                <router-link class="nav-link left" to="/">Home</router-link>
+                <router-link class="nav-link left" to="/images">Gallery</router-link>
                 @endauth
             </ul>
             <!-- Right Side Of Navbar -->

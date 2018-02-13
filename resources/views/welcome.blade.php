@@ -79,16 +79,8 @@
             <div class="content">
                 <div class="title m-b-md">
                     Peerpower Gallery
-                    <div id="app">
-                        <route-link to="/">Home</route-link>
-                        <route-link to="/login">Login</route-link>
-                        <route-link to="/register">Register</route-link>
-                        <router-view></router-view>
-                    </div>
                 </div>
             </div>
         </div>
     </body>
-
-    <script src="{{ asset('js/app.js') }}"></script>
 </html>

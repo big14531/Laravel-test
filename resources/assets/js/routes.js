@@ -4,7 +4,6 @@ import VueRouter from 'vue-router'
 
 let routes = [
     { path : '/', component : Home },
-    { path : '/home', component : Home },
     { path : '/gallery', component : Gallery }
 ]
 
