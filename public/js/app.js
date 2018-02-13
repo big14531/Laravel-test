@@ -49658,6 +49658,27 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -49684,10 +49705,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        console.log('Component mounted.');
-    }
+  data: function data() {
+    return {
+      total_file: 0,
+      total_size: 0,
+      datas: [],
+      errors: []
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/home/show').then(function (response) {
+      _this.total_file = response.data.total_file;
+      _this.total_size = response.data.total_size;
+      _this.datas = response.data.file_type;
+    }).catch(function (e) {
+      _this.errors.push(e);
+    });
+  }
 });
 
 /***/ }),
@@ -49698,34 +49737,82 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container" }, [
+    _c("h1", [_vm._v("Home")]),
+    _vm._v(" "),
+    _c("hr"),
+    _vm._v(" "),
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-8" }, [
+        _c("div", { staticClass: "disk-usage-box card card-default" }, [
+          _c("div", { staticClass: "card-header" }, [_vm._v("Disk Usage")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("ul", [
+              _c("li", [
+                _vm._v(
+                  "Total size : " +
+                    _vm._s((_vm.total_size / (1024 * 1024)).toFixed(2)) +
+                    "MB ( " +
+                    _vm._s(_vm.total_size.toFixed(2)) +
+                    " B )"
+                )
+              ]),
+              _vm._v(" "),
+              _c("li", [_vm._v("Number of files : " + _vm._s(_vm.total_file))])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "file-comp-box card card-default" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _vm._v("File Usage Compositions")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("table", { staticClass: "table" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.datas, function(item) {
+                  return _c("tr", [
+                    _c("td", { attrs: { scope: "row" } }, [
+                      _vm._v(_vm._s(item["name"]) + " ")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item["count"]) + " ")]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(
+                        _vm._s((item["size"] / (1024 * 1024)).toFixed(2)) +
+                          "MB ( " +
+                          _vm._s(item["size"].toFixed(2)) +
+                          " B )"
+                      )
+                    ])
+                  ])
+                })
+              )
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("h1", [_vm._v("Home")]),
-      _vm._v(" "),
-      _c("hr"),
-      _vm._v(" "),
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("div", { staticClass: "disk-usage-box card card-default" }, [
-            _c("div", { staticClass: "card-header" }, [_vm._v("Disk Usage")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [_c("ul")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "file-comp-box card card-default" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _vm._v("File Usage Compositions")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" })
-          ])
-        ])
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Type")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("No. of file")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Size")])
       ])
     ])
   }
