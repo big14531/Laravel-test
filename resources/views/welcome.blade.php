@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>Peerpower Gallery Test</title>
 
         <!-- Fonts -->
@@ -76,12 +76,19 @@
                     @endauth
                 </div>
             @endif
-
             <div class="content">
                 <div class="title m-b-md">
                     Peerpower Gallery
+                    <div id="app">
+                        <route-link to="/">Home</route-link>
+                        <route-link to="/login">Login</route-link>
+                        <route-link to="/register">Register</route-link>
+                        <router-view></router-view>
+                    </div>
                 </div>
             </div>
         </div>
     </body>
+
+    <script src="{{ asset('js/app.js') }}"></script>
 </html>
