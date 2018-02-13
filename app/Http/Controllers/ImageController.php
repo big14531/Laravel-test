@@ -16,7 +16,7 @@ class ImageController extends Controller
     public function index()
     {
         $images = Image::where( 'user_id' , '=' , Auth::id() )->get();
-        return view('images' , compact('images') );
+        return compact('images');
     }
 
     public function store( Request $request )
@@ -35,6 +35,6 @@ class ImageController extends Controller
                 'type' => $image->extension(),
                 'size' => $image->getClientSize()
         ]);
-        return back()->with('success' , 'uploaded done');
+        return compact('success' , 'uploaded done');
     }
 }
